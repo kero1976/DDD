@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{92F5A73B-8EDB-4969-831B-9081FED365AD}"
 	ProjectSection(SolutionItems) = preProject
 		フォルダ名変更手順.txt = フォルダ名変更手順.txt
+		プロジェクト説明.txt = プロジェクト説明.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDD.WinFormBad1", "DDD.WinFormBad1\DDD.WinFormBad1.csproj", "{B585406C-2BEE-449B-9150-F06B5CF5C892}"
