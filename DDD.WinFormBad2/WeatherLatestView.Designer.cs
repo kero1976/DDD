@@ -134,7 +134,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "WeatherLatestView";
-            this.Text = "WeatherLatestViewBad1";
+            this.Text = "WeatherLatestViewBad2";
             this.ResumeLayout(false);
             this.PerformLayout();
 
