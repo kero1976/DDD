@@ -13,7 +13,7 @@ namespace DDD.WinForm
 {
     public partial class WeatherLatestView : Form
     {
-        private readonly string ConnectionString = @"Data Source=C:\Users\kero\Desktop\DDD.db;Version=3;";
+        private readonly string ConnectionString = @"Data Source=..\..\..\DDD.db;Version=3;";
         public WeatherLatestView()
         {
             InitializeComponent();
