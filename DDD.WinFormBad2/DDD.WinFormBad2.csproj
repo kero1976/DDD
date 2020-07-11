@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3C96E996-EAA4-4E36-B38F-A35148FF38BD}</ProjectGuid>
+    <ProjectGuid>{7A54209F-6158-4055-BB16-15F7C582820A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>DDD.WinForm</RootNamespace>
     <AssemblyName>DDD.WinForm</AssemblyName>
