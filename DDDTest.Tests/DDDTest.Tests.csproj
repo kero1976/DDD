@@ -51,9 +51,24 @@
   <ItemGroup>
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WeatherLatestViewModelTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DDD.Domain\DDD.Domain.csproj">
+      <Project>{581c59df-2c8f-44f5-b3cb-9c60cc5a8178}</Project>
+      <Name>DDD.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DDD.Infrastructure\DDD.Infrastructure.csproj">
+      <Project>{6f7c5bd5-c7de-407a-9ef5-cc0e9d660517}</Project>
+      <Name>DDD.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DDD.WinForm\DDD.WinForm.csproj">
+      <Project>{3c96e996-eaa4-4e36-b38f-a35148ff38bd}</Project>
+      <Name>DDD.WinForm</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
