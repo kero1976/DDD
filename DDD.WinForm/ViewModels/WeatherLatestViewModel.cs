@@ -28,8 +28,7 @@ namespace DDD.WinForm.ViewModels
             {
                 DataDateText = entity.DataDate.ToString();
                 ConditionText = entity.Condition.ToString();
-                TempertureText =
-                    CommonFunc.RoundString(entity.Temperature, CommonConst.TemperarureDecimalPoint) + " " + CommonConst.TemperatureUnitName;
+                TempertureText = entity.Temperature.DisplayValue;
             }
         }
     }
