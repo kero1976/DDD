@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DDD.Domain.ValueObjects
+namespace DDD.Domain.ValueObjects 
 {
-    public sealed class Temperature
+    public sealed class Temperature : ValueObject<Temperature>
     {
         public const string UnitName = "℃";
         public const int DecimalPoint = 2;
@@ -23,6 +23,11 @@ namespace DDD.Domain.ValueObjects
             {
                 return CommonFunc.RoundString(Value, DecimalPoint) + " " + UnitName;
             }
+        }
+
+        protected override bool EqualsCore(Temperature other)
+        {
+            return Value == other.Value;
         }
     }
 }
