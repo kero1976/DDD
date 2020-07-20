@@ -37,8 +37,7 @@ namespace DDD.WinForm
             {
                 DataDateLabel.Text = dt.Rows[0]["DataDate"].ToString();
                 ConditionLabel.Text = dt.Rows[0]["Condition"].ToString();
-                TemperatureLabel.Text =
-                    CommonFunc.RoundString(Convert.ToSingle(dt.Rows[0]["Temperature"].ToString()), CommonConst.TemperarureDecimalPoint) + CommonConst.TemperatureUnitName;
+                TemperatureLabel.Text = dt.Rows[0]["Temperature"].ToString();
             }
         }
     }
