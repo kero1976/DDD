@@ -10,14 +10,14 @@ namespace DDD.Domain.Entities
 
         public int AreaId { get; }
         public DateTime DataDate { get; }
-        public int Condition { get; }
+        public Condition Condition { get; }
         public Temperature Temperature { get; }
 
         public WeatherEntity(int areaId, DateTime dateTime, int condition, float temperature)
         {
             AreaId = areaId;
             DataDate = dateTime;
-            Condition = condition;
+            Condition = new Condition(condition);
             Temperature = new Temperature(temperature);
         }
 
