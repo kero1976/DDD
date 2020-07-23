@@ -5,11 +5,9 @@ using System.ComponentModel;
 
 namespace DDD.WinForm.ViewModels
 {
-    public class WeatherLatestViewModel : INotifyPropertyChanged
+    public class WeatherLatestViewModel : ViewModelBase
     {
         private IWeatherRepository _weather;
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         private string _areaIdText = string.Empty;
         public string AreaIdText
@@ -20,12 +18,7 @@ namespace DDD.WinForm.ViewModels
             }
             set
             {
-                if (_areaIdText == value)
-                {
-                    return;
-                }
-                _areaIdText = value;
-                OnPropertyChanged(nameof(AreaIdText));
+                SetProperty(ref _areaIdText, value);
             }
         }
 
@@ -38,12 +31,7 @@ namespace DDD.WinForm.ViewModels
             }
             set
             {
-                if (_dataDateText == value)
-                {
-                    return;
-                }
-                _dataDateText = value;
-                OnPropertyChanged(nameof(DataDateText));
+                SetProperty(ref _dataDateText, value);
             }
         }
 
@@ -56,12 +44,7 @@ namespace DDD.WinForm.ViewModels
             }
             set
             {
-                if (_conditionText == value)
-                {
-                    return;
-                }
-                _conditionText = value;
-                OnPropertyChanged(nameof(ConditionText));
+                SetProperty(ref _conditionText, value);
             }
         }
 
@@ -74,12 +57,7 @@ namespace DDD.WinForm.ViewModels
             }
             set
             {
-                if (_tempertureText == value)
-                {
-                    return;
-                }
-                _tempertureText = value;
-                OnPropertyChanged(nameof(TempertureText));
+                SetProperty(ref _tempertureText, value);
             }
         }
 
@@ -100,12 +78,6 @@ namespace DDD.WinForm.ViewModels
                 ConditionText = entity.Condition.DisplayValue;
                 TempertureText = entity.Temperature.DisplayValue;
             }
-            //OnPropertyChanged("");
-        }
-        public void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this,
-                new PropertyChangedEventArgs(propertyName));
         }
     }
 }
