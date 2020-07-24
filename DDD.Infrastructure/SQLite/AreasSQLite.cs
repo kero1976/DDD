@@ -13,31 +13,13 @@ namespace DDD.Infrastructure.SQLite
     {
         public IReadOnlyList<AreaEntity> GetData()
         {
-            String sql = @"
-select AreaId,AreaName from Areas";
+            String sql = @"select AreaId,AreaName from Areas";
 
-            var result = new List<AreaEntity>();
-
-            using (var connection = new SQLiteConnection(SQLiteHelper.ConnectionString))
+            return SQLiteHelper.Query(sql, reader =>
             {
-                using (var command = new SQLiteCommand(sql, connection))
-                {
-                    connection.Open();
-                    using (var reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            result.Add(
-                                new AreaEntity(
-                                    Convert.ToInt32(reader["AreaId"]),
-                                    Convert.ToString(reader["AreaName"])
-                                ));
-                        }
-                    }
-                }
-            }
-            return result.AsReadOnly();
+                return new AreaEntity(Convert.ToInt32(reader["AreaId"]),
+                      Convert.ToString(reader["AreaName"]));
+            });
         }
     }
-
 }
