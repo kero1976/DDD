@@ -1,5 +1,7 @@
-﻿using DDD.Domain.Repositories;
+﻿using DDD.Domain.Entities;
+using DDD.Domain.Repositories;
 using DDD.Infrastructure.Data;
+using DDD.Infrastructure.SQLite;
 using System;
 using System.ComponentModel;
 
@@ -8,17 +10,18 @@ namespace DDD.WinForm.ViewModels
     public class WeatherLatestViewModel : ViewModelBase
     {
         private IWeatherRepository _weather;
+        private IAreasRepository _areas;
 
-        private string _areaIdText = string.Empty;
-        public string AreaIdText
+        private object _selectedAreaId;
+        public object SelectedAreaId
         {
             get
             {
-                return _areaIdText;
+                return _selectedAreaId;
             }
             set
             {
-                SetProperty(ref _areaIdText, value);
+                SetProperty(ref _selectedAreaId, value);
             }
         }
 
@@ -61,18 +64,31 @@ namespace DDD.WinForm.ViewModels
             }
         }
 
+        public BindingList<AreaEntity> Areas { get; set; } = new BindingList<AreaEntity>();
 
-        public WeatherLatestViewModel(IWeatherRepository weather)
+        public WeatherLatestViewModel(IWeatherRepository weather,IAreasRepository areas)
         {
             _weather = weather;
+            _areas = areas;
+
+            foreach(var area in _areas.GetData())
+            {
+                Areas.Add(new AreaEntity(area.AreaId, area.AreaName));
+            }
         }
-        public WeatherLatestViewModel() : this(new WeatherSQLite())
+        public WeatherLatestViewModel() : this(new WeatherSQLite(), new AreasSQLite())
         {
         }
         public void Search()
         {
-            var entity = _weather.GetLatest(Convert.ToInt32(AreaIdText));
-            if (entity != null)
+            var entity = _weather.GetLatest(Convert.ToInt32(SelectedAreaId));
+            if (entity == null)
+            {
+                DataDateText = string.Empty;
+                ConditionText = string.Empty;
+                TempertureText = string.Empty;
+            }
+            else
             {
                 DataDateText = entity.DataDate.ToString();
                 ConditionText = entity.Condition.DisplayValue;
