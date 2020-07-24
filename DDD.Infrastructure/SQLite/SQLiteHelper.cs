@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DDD.Infrastructure.SQLite
 {
@@ -12,17 +9,15 @@ namespace DDD.Infrastructure.SQLite
         internal const string ConnectionString = @"Data Source=..\..\..\..\DDD.db;Version=3;";
 
         internal static IReadOnlyList<T> Query<T>(string sql,
-
-    Func<SQLiteDataReader, T> createEntity)
+            Func<SQLiteDataReader, T> createEntity)
         {
-
             return Query<T>(sql, null, createEntity);
         }
 
 
-            internal static IReadOnlyList<T> Query<T>(string sql,
-                            SQLiteParameter[] parameters,
-            Func<SQLiteDataReader,T> createEntity)
+        internal static IReadOnlyList<T> Query<T>(string sql,
+            SQLiteParameter[] parameters,
+            Func<SQLiteDataReader, T> createEntity)
         {
             var result = new List<T>();
             using (var connection = new SQLiteConnection(SQLiteHelper.ConnectionString))
@@ -31,7 +26,7 @@ namespace DDD.Infrastructure.SQLite
                 {
                     connection.Open();
 
-                    if(parameters != null)
+                    if (parameters != null)
                     {
                         command.Parameters.AddRange(parameters);
                     }
@@ -49,17 +44,16 @@ namespace DDD.Infrastructure.SQLite
         }
 
         internal static T QuerySingle<T>(string sql,
-
-Func<SQLiteDataReader, T> createEntity,
-T nullEntity)
+            Func<SQLiteDataReader, T> createEntity,
+            T nullEntity)
         {
-            return QuerySingle<T>(sql, null,createEntity, nullEntity);
+            return QuerySingle<T>(sql, null, createEntity, nullEntity);
         }
 
-            internal static T QuerySingle<T>(string sql,
-                SQLiteParameter[] parameters,
-    Func<SQLiteDataReader, T> createEntity,
-    T nullEntity)
+        internal static T QuerySingle<T>(string sql,
+            SQLiteParameter[] parameters,
+            Func<SQLiteDataReader, T> createEntity,
+            T nullEntity)
         {
             using (var connection = new SQLiteConnection(SQLiteHelper.ConnectionString))
             {
@@ -75,7 +69,7 @@ T nullEntity)
                     {
                         while (reader.Read())
                         {
-                           return createEntity(reader);
+                            return createEntity(reader);
                         }
                     }
                 }
