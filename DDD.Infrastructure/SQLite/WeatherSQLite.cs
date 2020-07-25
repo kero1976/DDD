@@ -9,6 +9,11 @@ namespace DDD.Infrastructure.Data
 {
     public class WeatherSQLite : IWeatherRepository
     {
+        public IReadOnlyList<WeatherEntity> GetData()
+        {
+            throw new NotImplementedException();
+        }
+
         public WeatherEntity GetLatest(int areaId)
         {
             String sql = @"select DataDate, Condition, Temperature from Weather 
