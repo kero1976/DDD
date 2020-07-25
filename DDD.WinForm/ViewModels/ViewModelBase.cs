@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace DDD.WinForm.ViewModels
@@ -8,7 +9,7 @@ namespace DDD.WinForm.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected bool SetProperty<T>(ref T field,
-    T value, [CallerMemberName] string propertyName = null)
+            T value, [CallerMemberName] string propertyName = null)
         {
             if (Equals(field, value))
             {
@@ -23,6 +24,11 @@ namespace DDD.WinForm.ViewModels
             }
 
             return true;
+        }
+
+        public virtual DateTime GetDateTime()
+        {
+            return DateTime.Now;
         }
     }
 }

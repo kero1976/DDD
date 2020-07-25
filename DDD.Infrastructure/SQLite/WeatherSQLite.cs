@@ -11,7 +11,20 @@ namespace DDD.Infrastructure.Data
     {
         public IReadOnlyList<WeatherEntity> GetData()
         {
-            throw new NotImplementedException();
+            string sql = @"
+select A.areaId,B.AreaName,A.DataDate,A.Condition,A.Temperature
+from Weather a left outer join Areas B
+where A.areaId = B.AreaId";
+
+            return SQLiteHelper.Query(sql, reader =>
+            {
+                return new WeatherEntity(
+                    Convert.ToInt32(reader["AreaId"]),
+                    Convert.ToString(reader["AreaName"]),
+                    Convert.ToDateTime(reader["DataDate"]),
+                    Convert.ToInt32(reader["Condition"]),
+                    Convert.ToSingle(reader["Temperature"]));
+            });
         }
 
         public WeatherEntity GetLatest(int areaId)

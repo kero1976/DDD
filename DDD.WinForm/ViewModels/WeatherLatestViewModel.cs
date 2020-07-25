@@ -1,5 +1,6 @@
 ﻿using DDD.Domain.Entities;
 using DDD.Domain.Repositories;
+using DDD.Domain.ValueObjects;
 using DDD.Infrastructure.Data;
 using DDD.Infrastructure.SQLite;
 using System;
@@ -81,7 +82,8 @@ namespace DDD.WinForm.ViewModels
         }
         public void Search()
         {
-            var entity = _weather.GetLatest(Convert.ToInt32(SelectedAreaId));
+            // TODO: 後で確認する
+            var entity = _weather.GetLatest(((AreaId)SelectedAreaId).Value);
             if (entity == null)
             {
                 DataDateText = string.Empty;
