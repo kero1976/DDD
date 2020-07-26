@@ -83,6 +83,7 @@ namespace DDD.WinForm.ViewModels
         public void Search()
         {
             // TODO: 後で確認する
+            //var entity = _weather.GetLatest(Convert.ToInt32(_selectedAreaId));
             var entity = _weather.GetLatest(((AreaId)SelectedAreaId).Value);
             if (entity == null)
             {
