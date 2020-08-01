@@ -1,4 +1,6 @@
 ﻿using DDD.Domain.Entities;
+using DDD.Infrastructure;
+using DDD.Infrastructure.Fake;
 using DDD.WinForm.ViewModels;
 using DDD.WinForm.Views;
 using System;
@@ -12,7 +14,7 @@ namespace DDD.WinForm
     public partial class WeatherLatestView : Form
     {
         private WeatherLatestViewModel _viewModel
-            = new WeatherLatestViewModel();
+            = new WeatherLatestViewModel(Factories.CreateWeather(), Factories.CreateAreas());
         public WeatherLatestView()
         {
             InitializeComponent();
